@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,15 +17,18 @@
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
                 <h2>User Singup</h2>
-                ${name}
+                <c:out value="${name}"></c:out>
+                <c:forEach var="item" items="${errors}">
+                    <div><c:out value="${item.getField()}"></c:out> - <c:out value="${item.getDefaultMessage()}"></c:out></div>
+                </c:forEach>
                 <form action="signup" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input name="name" type="text" class="form-control" id="name">
+                        <input  name="name" type="text" class="form-control" id="name">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input name="email" type="email" class="form-control" id="exampleInputEmail1">
+                        <input  name="email" type="email" class="form-control" id="exampleInputEmail1">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -31,8 +36,8 @@
                     </div>
                     <div class="mb-3">
                         <select name="city" class="form-select" aria-label="Default select example">
-                            <option selected>City Select</option>
-                            <option value="1">Istanbul</option>
+                            <option >City Select</option>
+                            <option selected value="1">Istanbul</option>
                             <option value="2">Bursa</option>
                             <option value="3">Tekirdag</option>
                         </select>
