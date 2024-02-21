@@ -1,9 +1,6 @@
 package com.works.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +20,7 @@ public class Customer {
     @NotNull
     private String name;
 
+    @Column(unique = true)
     @Email
     @Size(min = 5, max = 100)
     @NotEmpty

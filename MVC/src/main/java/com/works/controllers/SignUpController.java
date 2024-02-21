@@ -2,6 +2,7 @@ package com.works.controllers;
 
 import com.works.entities.Customer;
 import com.works.services.SignUpService;
+import com.works.services.TinkEncDec;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SignUpController {
 
     final SignUpService signUpService;
+    final TinkEncDec tinkEncDec;
 
     @GetMapping("")
     public String home() {
+
+        String cipherText = tinkEncDec.encrypt("12345");
+        System.out.println(cipherText);
+
+        String oldCipher = "w7fDnsKLOhvDnQ/DjybDgyHDg8OrwojDu8O4w7TDksKew5xtczLDkDzDusKYw5E/NgF0Mw==";
+        String plainText = tinkEncDec.decrypt(oldCipher);
+        System.out.println(plainText);
+
         return "signup";
     }
 
